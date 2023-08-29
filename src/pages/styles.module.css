@@ -127,3 +127,21 @@
   box-shadow: none;
   cursor: pointer;
 }
+.navbar--fixed-top {
+  display: none;
+}
+.ant-float-btn {
+  display: none;
+}
+.searchContainer_FQjg {
+    display: none;
+}
+.button.button--secondary {
+  display: none;
+}
+.button, .button:hover {
+    display: none;
+}
+p {
+    font: 20px sold;
+}
