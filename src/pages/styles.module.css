@@ -127,7 +127,7 @@
   box-shadow: none;
   cursor: pointer;
 }
-.navbar--fixed-top {
+.navbar {
   display: none;
 }
 .ant-float-btn {
