@@ -245,3 +245,18 @@ div[class^="announcementBar_"] {
 [data-theme="dark"] [data-rmiz-modal-overlay="visible"] {
   background-color: rgba(0 0 0 / 95%);
 }
+.button.button--secondary {
+  display: none;
+}
+.button, .button:hover {
+    display: none;
+}
+p {
+    font: 20px sold;
+}
+.navbarHideable_m1mJ {
+    display: none;
+}
+.button.button--secondary{
+    display: none;
+}
