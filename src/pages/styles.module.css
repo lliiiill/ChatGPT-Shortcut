@@ -145,3 +145,9 @@
 p {
     font: 20px sold;
 }
+.navbarHideable_m1mJ {
+    display: none;
+}
+.button.button--secondary{
+    display: none;
+}
