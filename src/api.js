@@ -1,5 +1,5 @@
 import axios from "axios";
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 // 登陆体系常量
 const API_URL = "https://api.newzone.top/api"; // http://localhost:1337/api  https://api.newzone.top/api
@@ -40,7 +40,10 @@ export async function getUserAllInfo() {
       return JSON.parse(cachedData);
     } else {
       // 如果缓存不存在或已过期，那么发送请求获取新的数据
-      const response = await axios.get(`${API_URL}/users/me?fields[0]=username&fields[1]=email&populate[favorites][fields][0]=loves&populate[favorites][fields][1]=commLoves&populate[userprompts]=*`, config);
+      const response = await axios.get(
+        `${API_URL}/users/me?fields[0]=username&fields[1]=email&populate[favorites][fields][0]=loves&populate[favorites][fields][1]=commLoves&populate[userprompts]=*`,
+        config
+      );
       // 将新的数据存入缓存，设置缓存过期时间为 24 小时后
       localStorage.setItem(cacheKey, JSON.stringify(response));
       localStorage.setItem(expirationKey, (new Date().getTime() + 24 * 60 * 60 * 1000).toString());
@@ -265,9 +268,6 @@ export function getSelectComms(ids) {
 // 投票用户提示
 export async function voteOnUserPrompt(promptId, action) {
   try {
-    if (!authToken) {
-      throw new Error("Kindly proceed with casting your vote after logging in.");
-    }
     if (!["upvote", "downvote"].includes(action)) {
       throw new Error("Invalid vote action");
     }
@@ -351,7 +351,9 @@ export async function getComments(pageId, page, pageSize, type = "card") {
     return Promise.resolve(cachedData);
   } else {
     try {
-      const response = await axios.get(`${API_URL}/comments/api::${type}.${type}:${pageId}/flat?fields[0]=content&fields[1]=createdAt&pagination[page]=${page}&pagination[pageSize]=${pageSize}&pagination[withCount]=true&sort=id:desc`);
+      const response = await axios.get(
+        `${API_URL}/comments/api::${type}.${type}:${pageId}/flat?fields[0]=content&fields[1]=createdAt&pagination[page]=${page}&pagination[pageSize]=${pageSize}&pagination[withCount]=true&sort=id:desc`
+      );
 
       const nextExpirationDate = new Date().getTime() + 1 * 60 * 60 * 1000; // 1 小时后过期
       localStorage.setItem(cacheKey, JSON.stringify(response.data));
@@ -395,7 +397,7 @@ export async function postComment(pageId, commentContent, threadOf = null, type 
   }
 }
 
-// 更新评论
+/* // 更新评论
 export async function updateComment(pageId, commentId, commentContent, type = "card") {
   try {
     const response = await axios.put(
@@ -426,7 +428,7 @@ export async function deleteComment(pageId, commentId, type = "card") {
     console.error("Error deleting comment:", error);
     throw error;
   }
-}
+} */
 
 /* 精选提示词的 copy count */
 // 获取所有 cards 的 copy count
